@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paperflow"
+version = "0.1.0"
+description = "PaperFlow - Windows desktop academic paper typesetting assistant"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "PaperFlow contributors" }]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Operating System :: Microsoft :: Windows",
+]
+dependencies = [
+  "PySide6-Essentials>=6.8,<7",
+  "openai>=1.40,<3",
+  "keyring>=25,<27",
+  "pydantic>=2.8,<3",
+  "platformdirs>=4.2,<5",
+  "charset-normalizer>=3.3,<4",
+  "markdown-it-py>=3.0,<5",
+  "mdit-py-plugins>=0.4,<1",
+  "Jinja2>=3.1,<4",
+  "pypdfium2>=4.30,<5",
+  "Pillow>=10,<12",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+  "pytest-qt>=4.4,<5",
+  "ruff>=0.9,<1",
+]
+build = [
+  "pyinstaller>=6.10,<7",
+]
+
+[project.scripts]
+paperflow = "paperflow.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+paperflow = ["resources/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+qt_api = "pyside6"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]

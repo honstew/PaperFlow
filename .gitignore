@@ -1,0 +1,36 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+backups/
+*.egg-info/
+.paperflow-dev/
+.paperflow-*/
+pf-*/
+pytest-of-*/
+pip-*/
+pip-build-env-*/
+.uv-cache/
+paperflow-biber-tmp/
+paperflow-build-*/
+.paperflow-build-tmp/
+paperflow-tests-*/
+paperflow-env-*/
+*.log
+.DS_Store
+
+# 发布产物：安装包体积大，改为 GitHub Release 附件上传，不进 Git 历史。
+binaries/
+dist/
+release/
+
+# User-provided reference paper: keep locally, do not commit.
+参考论文例子/
+
+# Local test credentials: never commit or package.
+deepseek测试key.txt
+*测试key*.txt
+deepseek*key*.txt
